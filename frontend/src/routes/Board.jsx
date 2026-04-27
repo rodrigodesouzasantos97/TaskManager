@@ -1,3 +1,5 @@
+import Category from "../components/Category";
+
 const Board = () => {
   return (
     <div className="board">
@@ -7,59 +9,9 @@ const Board = () => {
         <button>Create Category</button>
       </div>
       <div className="categories">
-        <div className="category">
-          <h3>Backlog</h3>
-          <div className="tasks">
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-          </div>
-          <button>Add Task</button>
-        </div>
-
-        <div className="category">
-          <h3>In Progress</h3>
-          <div className="tasks">
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-          </div>
-          <button>Add Task</button>
-        </div>
-
-        <div className="category">
-          <h3>Finished</h3>
-          <div className="tasks">
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-
-            <div className="task">
-              <p>Nome da Task</p>
-            </div>
-          </div>
-          <button>Add Task</button>
-        </div>
+        <Category title="Backlog" />
+        <Category title="In Progress" />
+        <Category title="Done" />
       </div>
     </div>
   );
