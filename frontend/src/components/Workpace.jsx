@@ -1,13 +1,27 @@
+import { useState } from "react";
+
 import Board from "../components/Board";
 
 const Workpace = ({ title }) => {
+  const [boards, setBoards] = useState([]);
+
+  const createBoard = () => {
+    const newBoard = {
+      id: Date.now(),
+      title: "Novo quadro",
+    };
+
+    setBoards([...boards, newBoard]);
+  };
+
   return (
     <div className="workpace">
       <h2>{title}</h2>
       <div className="boards">
-        <Board title="Board 1" />
-        <Board title="Board 2" />
-        <button className="new-board-btn">
+        {boards.map((board) => (
+          <Board key={board.id} title={board.title} />
+        ))}
+        <button onClick={createBoard} className="new-board-btn">
           <i className="fa-solid fa-plus"></i>Criar novo quadro
         </button>
       </div>
