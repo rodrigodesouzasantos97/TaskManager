@@ -10,7 +10,7 @@ const Category = ({ title }) => {
         <Task description="Tarefa 3" />
       </div>
       <button>
-        <i class="fa-solid fa-plus"></i>Add Task
+        <i class="fa-solid fa-plus"></i>Adicionar tarefa
       </button>
     </div>
   );
