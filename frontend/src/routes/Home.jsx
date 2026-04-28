@@ -2,35 +2,51 @@ import { useState } from "react";
 
 import "./Home.css";
 
-import Workpace from "../components/Workpace";
+import Workspace from "../components/Workspace";
+import { useActionData } from "react-router-dom";
 
 const Home = () => {
-  const [workpaces, setWorkpaces] = useState([]);
-  const [filteredWorkpaces, setFilteredWorkpaces] = useState([]);
+  const [newWorkspaceTitle, setNewWorkspaceTitle] = useState("");
+  const [workspaces, setWorkspaces] = useState([]);
+  const [filteredWorkspaces, setFilteredWorkspaces] = useState([]);
 
-  const createWorkpace = () => {
-    const newWorkpace = {
+  const [workspaceConfigScreenIsOpen, setWorkspaceConfigScreenIsOpen] =
+    useState(false);
+
+  const createWorkspace = (e) => {
+    e.preventDefault();
+
+    if(!newWorkspaceTitle) return;
+
+    const newWorkspace = {
       id: Date.now(),
-      title: `Novo espaço de trabalho ${Date.now()}`,
+      title: newWorkspaceTitle,
     };
 
-    const updated = [...workpaces, newWorkpace];
+    const updated = [...workspaces, newWorkspace];
 
-    setWorkpaces(updated);
-    setFilteredWorkpaces(updated);
+    setWorkspaces(updated);
+    setFilteredWorkspaces(updated);
+
+    setNewWorkspaceTitle("");
+    toggleWorkspaceConfigScreen();
   };
 
-  const searchWorkpaces = (value) => {
+  const searchWorkspaces = (value) => {
     if (!value) {
-      setFilteredWorkpaces(workpaces);
+      setFilteredWorkspaces(workspaces);
       return;
     }
 
-    const filtered = workpaces.filter((workpace) =>
-      workpace.title.includes(value),
+    const filtered = workspaces.filter((workspace) =>
+      workspace.title.includes(value),
     );
 
-    setFilteredWorkpaces(filtered);
+    setFilteredWorkspaces(filtered);
+  };
+
+  const toggleWorkspaceConfigScreen = () => {
+    setWorkspaceConfigScreenIsOpen(!workspaceConfigScreenIsOpen);
   };
 
   return (
@@ -40,21 +56,40 @@ const Home = () => {
           type="text"
           name="search"
           placeholder="Procurar espaço de trabalho"
-          onChange={(e) => searchWorkpaces(e.target.value)}
+          onChange={(e) => searchWorkspaces(e.target.value)}
         />
-        <button onClick={createWorkpace}>
+        <button onClick={toggleWorkspaceConfigScreen}>
           <i className="fa-solid fa-plus"></i>Criar novo espaço
         </button>
+        {workspaceConfigScreenIsOpen ? (
+          <form onSubmit={createWorkspace} className="workpaceConfigScreen">
+            <button type="button" onClick={toggleWorkspaceConfigScreen}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+            <h3>Criar espaço de trabalho</h3>
+            <label>
+              <span>Digite um título:</span>
+              <input
+                type="text"
+                name="title"
+                onChange={(e) => setNewWorkspaceTitle(e.target.value)}
+              />
+            </label>
+            <input type="submit" value="Criar" />
+          </form>
+        ) : (
+          ""
+        )}
       </div>
-      <div className="Workpaces">
-        {filteredWorkpaces.length === 0 && (
+      <div className="Workspaces">
+        {filteredWorkspaces.length === 0 && (
           <p>
             Você ainda não tem nenhum espaço de trabalho
             <i className="fa-solid fa-face-frown"></i>
           </p>
         )}
-        {filteredWorkpaces.map((workpace) => (
-          <Workpace key={workpace.id} title={workpace.title} />
+        {filteredWorkspaces.map((workspace) => (
+          <Workspace key={workspace.id} title={workspace.title} />
         ))}
       </div>
     </div>
