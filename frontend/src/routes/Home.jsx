@@ -7,7 +7,7 @@ const Home = () => {
     <div className="home">
       <div className="filter-bar">
         <input type="text" name="search" placeholder="Procurar espaço de trabalho" />
-        <button><i class="fa-solid fa-plus"></i>Criar novo espaço</button>
+        <button><i className="fa-solid fa-plus"></i>Criar novo espaço</button>
       </div>
       <div className="Workpaces">
         <Workpace title="Workpace 1" />

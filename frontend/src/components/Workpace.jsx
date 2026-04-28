@@ -8,7 +8,7 @@ const Workpace = ({ title }) => {
         <Board title="Board 1" />
         <Board title="Board 2" />
         <button className="new-board-btn">
-          <i class="fa-solid fa-plus"></i>Criar novo quadro
+          <i className="fa-solid fa-plus"></i>Criar novo quadro
         </button>
       </div>
     </div>
