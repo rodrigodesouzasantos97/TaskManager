@@ -1,3 +1,5 @@
+import "./Home.css"
+
 import Workpace from "../components/Workpace";
 
 const Home = () => {

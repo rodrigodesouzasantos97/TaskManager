@@ -9,7 +9,9 @@ const Category = ({ title }) => {
         <Task description="Tarefa 2" />
         <Task description="Tarefa 3" />
       </div>
-      <button>Add Task</button>
+      <button>
+        <i class="fa-solid fa-plus"></i>Add Task
+      </button>
     </div>
   );
 };

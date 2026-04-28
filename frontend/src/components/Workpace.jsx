@@ -1,13 +1,15 @@
-import Board from "../components/Board"
+import Board from "../components/Board";
 
-const Workpace = ({title}) => {
+const Workpace = ({ title }) => {
   return (
     <div className="workpace">
       <h2>{title}</h2>
       <div className="boards">
         <Board title="Board 1" />
         <Board title="Board 2" />
-        <button className="new-board-btn">Create new Board</button>
+        <button className="new-board-btn">
+          <i class="fa-solid fa-plus"></i>Create new Board
+        </button>
       </div>
     </div>
   );
