@@ -16,7 +16,7 @@ const Home = () => {
   const createWorkspace = (e) => {
     e.preventDefault();
 
-    if(!newWorkspaceTitle) return;
+    if (!newWorkspaceTitle) return;
 
     const newWorkspace = {
       id: Date.now(),
@@ -61,8 +61,8 @@ const Home = () => {
         <button onClick={toggleWorkspaceConfigScreen}>
           <i className="fa-solid fa-plus"></i>Criar novo espaço
         </button>
-        {workspaceConfigScreenIsOpen ? (
-          <form onSubmit={createWorkspace} className="workpaceConfigScreen">
+        {workspaceConfigScreenIsOpen && (
+          <form onSubmit={createWorkspace} className="workpace-config-screen">
             <button type="button" onClick={toggleWorkspaceConfigScreen}>
               <i className="fa-solid fa-xmark"></i>
             </button>
@@ -77,8 +77,6 @@ const Home = () => {
             </label>
             <input type="submit" value="Criar" />
           </form>
-        ) : (
-          ""
         )}
       </div>
       <div className="Workspaces">
