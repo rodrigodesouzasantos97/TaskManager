@@ -46,19 +46,9 @@ const Category = ({ title, searchValue }) => {
           />
         ))}
       </div>
-      <div className="open-screen">
-        <button onClick={toggleTaskConfigScreen} className="btn">
-          <i className="fa-solid fa-plus"></i>Adicionar tarefa
-        </button>
+      <div className="open-create-task">
         {taskConfigScreenIsOpen && (
-          <form onSubmit={createTask} className="config-screen">
-            <button
-              type="button"
-              onClick={toggleTaskConfigScreen}
-              className="close-btn"
-            >
-              <i className="fa-solid fa-xmark"></i>
-            </button>
+          <form onSubmit={createTask}>
             <h3>Criar tarefa</h3>
             <label>
               <span>Digite um título:</span>
@@ -71,18 +61,20 @@ const Category = ({ title, searchValue }) => {
             </label>
             <label>
               <span>Digite uma descrição:</span>
-              <input
-                type="text"
+              <textarea
                 name="description"
                 required
                 onChange={(e) => setTaskDescription(e.target.value)}
-              />
+              ></textarea>
             </label>
             <button type="submit" className="btn">
               Criar
             </button>
           </form>
         )}
+        <button onClick={toggleTaskConfigScreen} className="btn">
+          <i className="fa-solid fa-plus"></i>Adicionar tarefa
+        </button>
       </div>
     </div>
   );
