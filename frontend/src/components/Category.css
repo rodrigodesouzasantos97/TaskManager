@@ -1,5 +1,5 @@
 .category {
-  background-color: #fff;
+  background-color: #ddd;
   padding: 1rem;
   border-radius: 10px;
   display: flex;
@@ -7,4 +7,37 @@
   gap: 1rem;
   justify-content: start;
   align-items: center;
+  width: 250px;
+  height: 100%;
+}
+
+.tasks {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.open-create-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.open-create-task form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.open-create-task label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.open-create-task textarea {
+  height: 200px;
 }
