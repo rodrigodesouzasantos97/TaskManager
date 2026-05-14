@@ -2,9 +2,12 @@ import { useState } from "react";
 
 import Task from "./Task";
 
+import "./Category.css";
+
 const Category = ({ title, searchValue }) => {
   const [tasks, setTasks] = useState([]);
   const [taskConfigScreenIsOpen, setTaskConfigScreenIsOpen] = useState(false);
+  const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
 
   const createTask = (e) => {
@@ -12,11 +15,13 @@ const Category = ({ title, searchValue }) => {
 
     const newTask = {
       id: Date.now(),
+      title: taskTitle,
       description: taskDescription,
     };
 
     setTasks([...tasks, newTask]);
 
+    setTaskTitle("");
     setTaskDescription("");
     toggleTaskConfigScreen();
   };
@@ -34,29 +39,51 @@ const Category = ({ title, searchValue }) => {
       <h3>{title}</h3>
       <div className="tasks">
         {filteredTasks.map((task) => (
-          <Task key={task.id} description={task.description} />
+          <Task
+            key={task.id}
+            title={task.title}
+            description={task.description}
+          />
         ))}
       </div>
-      <button onClick={toggleTaskConfigScreen}>
-        <i className="fa-solid fa-plus"></i>Adicionar tarefa
-      </button>
-      {taskConfigScreenIsOpen && (
-        <form onSubmit={createTask} className="category-config-screen">
-          <button type="button" onClick={toggleTaskConfigScreen}>
-            <i className="fa-solid fa-xmark"></i>
-          </button>
-          <h3>Criar tarefa</h3>
-          <label>
-            <span>Digite um título:</span>
-            <input
-              type="text"
-              name="title"
-              onChange={(e) => setTaskDescription(e.target.value)}
-            />
-          </label>
-          <input type="submit" value="Criar" />
-        </form>
-      )}
+      <div className="open-screen">
+        <button onClick={toggleTaskConfigScreen} className="btn">
+          <i className="fa-solid fa-plus"></i>Adicionar tarefa
+        </button>
+        {taskConfigScreenIsOpen && (
+          <form onSubmit={createTask} className="config-screen">
+            <button
+              type="button"
+              onClick={toggleTaskConfigScreen}
+              className="close-btn"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+            <h3>Criar tarefa</h3>
+            <label>
+              <span>Digite um título:</span>
+              <input
+                type="text"
+                name="title"
+                required
+                onChange={(e) => setTaskTitle(e.target.value)}
+              />
+            </label>
+            <label>
+              <span>Digite uma descrição:</span>
+              <input
+                type="text"
+                name="description"
+                required
+                onChange={(e) => setTaskDescription(e.target.value)}
+              />
+            </label>
+            <button type="submit" className="btn">
+              Criar
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };
