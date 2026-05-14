@@ -3,8 +3,8 @@ import "./Task.css";
 const Task = ({ title, description }) => {
   return (
     <div className="task">
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <textarea defaultValue={title}></textarea>
+      <textarea defaultValue={description}></textarea>
     </div>
   );
 };
