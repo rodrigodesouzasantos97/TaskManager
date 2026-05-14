@@ -9,7 +9,7 @@ a {
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   color: #8324ff;
 }
 
@@ -23,6 +23,13 @@ input {
   padding: 0.2rem 0.5rem;
   border: none;
   border-radius: 10px;
+}
+
+textarea {
+  border: none;
+  resize: none;
+  padding: 0.6rem;
+  min-height: 50px;
 }
 
 .search {
