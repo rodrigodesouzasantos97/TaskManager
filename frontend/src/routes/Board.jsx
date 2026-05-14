@@ -77,20 +77,22 @@ const Board = () => {
           )}
         </div>
       </div>
-      <div className="categories">
-        {categories.length === 0 && (
-          <p>
-            Você ainda não tem nenhuma categoria
-            <i className="fa-solid fa-face-frown"></i>
-          </p>
-        )}
-        {categories.map((category) => (
-          <Category
-            key={category.id}
-            title={category.title}
-            searchValue={searchValue}
-          />
-        ))}
+      <div className="categories-container">
+        <div className="categories">
+          {categories.length === 0 && (
+            <p>
+              Você ainda não tem nenhuma categoria
+              <i className="fa-solid fa-face-frown"></i>
+            </p>
+          )}
+          {categories.map((category) => (
+            <Category
+              key={category.id}
+              title={category.title}
+              searchValue={searchValue}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
