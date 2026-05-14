@@ -14,6 +14,8 @@ const Board = () => {
   const createCategory = (e) => {
     e.preventDefault();
 
+    if (!categoryTitle) return;
+
     const newCategory = {
       id: Date.now(),
       title: categoryTitle,
@@ -35,34 +37,53 @@ const Board = () => {
         <input
           type="text"
           name="search"
+          className="search"
           placeholder="Procurar tarefa"
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <button>
+        <button className="filter-bar-btn">
           <i className="fa-solid fa-filter"></i>
         </button>
-        <button onClick={toggleCategoryConfigScreen}>
-          <i className="fa-solid fa-plus"></i>Criar categoria
-        </button>
-        {categoryConfigScreenIsOpen && (
-          <form onSubmit={createCategory} className="category-config-screen">
-            <button type="button" onClick={toggleCategoryConfigScreen}>
-              <i className="fa-solid fa-xmark"></i>
-            </button>
-            <h3>Criar categoria</h3>
-            <label>
-              <span>Digite um título:</span>
-              <input
-                type="text"
-                name="title"
-                onChange={(e) => setCategoryTitle(e.target.value)}
-              />
-            </label>
-            <input type="submit" value="Criar" />
-          </form>
-        )}
+        <div className="open-screen">
+          <button
+            onClick={toggleCategoryConfigScreen}
+            className="filter-bar-btn"
+          >
+            <i className="fa-solid fa-plus"></i>Criar categoria
+          </button>
+          {categoryConfigScreenIsOpen && (
+            <form onSubmit={createCategory} className="config-screen">
+              <button
+                type="button"
+                onClick={toggleCategoryConfigScreen}
+                className="close-btn"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+              <h3>Criar categoria</h3>
+              <label>
+                <span>Digite um título:</span>
+                <input
+                  type="text"
+                  name="title"
+                  required
+                  onChange={(e) => setCategoryTitle(e.target.value)}
+                />
+              </label>
+              <button type="submit" className="btn">
+                Criar
+              </button>
+            </form>
+          )}
+        </div>
       </div>
       <div className="categories">
+        {categories.length === 0 && (
+          <p>
+            Você ainda não tem nenhuma categoria
+            <i className="fa-solid fa-face-frown"></i>
+          </p>
+        )}
         {categories.map((category) => (
           <Category
             key={category.id}
