@@ -7,10 +7,7 @@
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  color: #8324ff;
+  color: #390083;
 }
 
 i {
@@ -38,6 +35,7 @@ textarea {
 }
 
 .btn {
+  color: #390083;
   background-color: #cda6ff;
   padding: 0.5rem;
   border: none;
@@ -51,6 +49,7 @@ textarea {
 }
 
 .close-btn {
+  color: #390083;
   background-color: #ffa6a6;
   padding: 0.3rem;
   border: none;
@@ -77,6 +76,7 @@ textarea {
 }
 
 .filter-bar-btn {
+  color: #390083;
   background-color: #cda6ff;
   height: 40px;
   padding: 0.5rem;
