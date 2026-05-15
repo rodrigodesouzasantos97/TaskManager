@@ -113,6 +113,7 @@ const Home = () => {
         {filteredWorkspaces.map((workspace) => (
           <Workspace
             key={workspace.id}
+            id={workspace.id}
             title={workspace.title}
             image={workspace.image}
           />
