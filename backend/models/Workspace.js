@@ -12,8 +12,10 @@ const workspaceSchema = new Schema(
       type: String,
       required: true,
     },
-    board: Schema.Types.ObjectId,
-    ref: "Board",
+    board: {
+      type: Schema.Types.ObjectId,
+      ref: "Board",
+    },
   },
   { timestamps: true },
 );
